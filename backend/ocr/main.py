@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+<<<<<<< HEAD
+=======
 from flask import Flask
 from PIL import Image
 import pytesseract as pyocr
@@ -16,3 +18,4 @@ def ocr():
 
 
 
+>>>>>>> bb5eb23c3bac294b0e61d19ef8196bdfbc06567f
