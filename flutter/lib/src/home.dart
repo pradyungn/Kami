@@ -44,7 +44,13 @@ class HomeState extends State<Home> {
         itemBuilder: (context, i) {
           if (i >= items.length) return null;
           final item = items[i];
-          return ItemView(item);
+          return InkWell(
+            child: ItemView(item),
+            onTap: () {
+              print('pressed ${item.title}');
+              Navigator.pushNamed(context, '/itemDetail', arguments: item);
+            },
+          );
         },
       ),
     );
