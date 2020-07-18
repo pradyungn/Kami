@@ -18,11 +18,16 @@ class ItemDetailView extends StatelessWidget {
             if (item.summary != null)
               SelectableText('Summary: ${item.summary}')
             else
-              Center(
-                child: RaisedButton(
-                  child: const Text('Summarize'),
-                  onPressed: () => print('create summary'),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('No summary generated'),
+                  const SizedBox(width: 8),
+                  RaisedButton(
+                    child: const Text('Summarize'),
+                    onPressed: () => print('create summary'),
+                  ),
+                ],
               ),
           ],
         ),
