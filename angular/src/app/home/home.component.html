@@ -1,12 +1,12 @@
 <div class="container-wide">
   <nav class="flex-smart flex-list align-center">
     <a routerLink="/" class="nav-brand">ｶﾐ Kami</a>
-    <button mat-raised-button class="btn-outline nav-right">Login</button>
-    <button mat-raised-button class="btn">Register</button>
+    <button mat-raised-button class="btn-outline nav-right" (click)="toggleLoginPrompt()">Login</button>
+    <button mat-raised-button class="btn" (click)="toggleLoginPrompt()">Register</button>
   </nav>
   <header class="header flex-column justify-center align-start">
     <h1>ｶﾐ Kami</h1>
     <p>It does stuff.</p>
   </header>
-  <home-login></home-login>
+  <home-login [hidden]="!this.showLoginPrompt"></home-login>
 </div>

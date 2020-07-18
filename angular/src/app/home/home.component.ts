@@ -7,9 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  showLoginPrompt = false;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void { }
 
+  toggleLoginPrompt() {
+    this.showLoginPrompt = !this.showLoginPrompt;
+  }
 }

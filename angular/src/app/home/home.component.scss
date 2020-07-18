@@ -16,6 +16,7 @@ nav {
     &:hover, &:focus {
       border-color: var(--dark-blue);
       background-color: var(--dark-blue);
+      color: var(--white);
     }
 
     @media (min-width: 768px) {
