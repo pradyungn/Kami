@@ -1,0 +1,16 @@
+const => key.split( ).reduce(( s ) => accum[key], obj)
+const B => fns.reduce(( ) => next(accum), res)
+
+const 5
+const = 5 ) = {
+const = f(seed)
+return res ? go(f, res[1], acc.concat([res[0]])) : acc
++
+return go(f, seed, [])
+
+I
+
+(f, el
+
+ 
+

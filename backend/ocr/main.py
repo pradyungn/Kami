@@ -13,6 +13,8 @@ def ocr():
     encode_png = request.args.get("encode", type = str)
     encode_string = base64.b64decode(encode_png)
     #return(encode_string)
+    image = Image.open(io.BytesIO(encode_string))
+    image.show()
     return(pyocr.image_to_string(Image.open(io.BytesIO(encode_string))))
 
 
