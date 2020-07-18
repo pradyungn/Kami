@@ -101,13 +101,12 @@ class _PhotoViewState extends State<PhotoView> {
               ),
               if (_images != null) SizedBox(width: 10),
               if (_images != null)
-                MaterialButton(
+                RaisedButton(
                   child: const Icon(
                     Icons.check,
                     color: Colors.white,
                   ),
                   color: Colors.green,
-                  minWidth: 16,
                   onPressed: () {
                     Navigator.pop(context, _images);
                   },
