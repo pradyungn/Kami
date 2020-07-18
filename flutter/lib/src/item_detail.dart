@@ -1,10 +1,10 @@
-import 'package:Kami/src/home.dart';
+import 'package:Kami/src/provider_api.dart';
 import 'package:flutter/material.dart';
 
 class ItemDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Item item = ModalRoute.of(context).settings.arguments;
+    final TextItem item = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text(item.title),
@@ -18,11 +18,16 @@ class ItemDetailView extends StatelessWidget {
             if (item.summary != null)
               SelectableText('Summary: ${item.summary}')
             else
-              Center(
-                child: RaisedButton(
-                  child: const Text('Summarize'),
-                  onPressed: () => print('create summary'),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('No summary generated'),
+                  const SizedBox(width: 8),
+                  RaisedButton(
+                    child: const Text('Summarize'),
+                    onPressed: () => print('create summary'),
+                  ),
+                ],
               ),
           ],
         ),
