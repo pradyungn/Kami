@@ -1,22 +1,37 @@
 PODS:
-  - camera (0.0.1):
-    - Flutter
+  - BSGridCollectionViewLayout (1.2.5)
+  - BSImagePicker (2.10.3):
+    - BSGridCollectionViewLayout (= 1.2.5)
+    - BSImageView (= 1.0.3)
+  - BSImageView (1.0.3)
   - Flutter (1.0.0)
+  - multi_image_picker (4.6.7):
+    - BSImagePicker (~> 2.10.3)
+    - Flutter
 
 DEPENDENCIES:
-  - camera (from `.symlinks/plugins/camera/ios`)
   - Flutter (from `Flutter`)
+  - multi_image_picker (from `.symlinks/plugins/multi_image_picker/ios`)
+
+SPEC REPOS:
+  trunk:
+    - BSGridCollectionViewLayout
+    - BSImagePicker
+    - BSImageView
 
 EXTERNAL SOURCES:
-  camera:
-    :path: ".symlinks/plugins/camera/ios"
   Flutter:
     :path: Flutter
+  multi_image_picker:
+    :path: ".symlinks/plugins/multi_image_picker/ios"
 
 SPEC CHECKSUMS:
-  camera: 38cc83ae9a5667bb5a71c7d9edaf60a91920fd4e
+  BSGridCollectionViewLayout: 333dcb457a5a3bdd9212607ab5756553dcfe06cb
+  BSImagePicker: 07404254f2fcdaf5a2eb403c0f8c337267ce8738
+  BSImageView: a149459433a2687157d034c78e059d30ac7f2544
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  multi_image_picker: 7968ace12b658a9ee51be6514473f5ee5501ea80
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: a75497545d4391e2d394c3668e20cfb1c2bbd4aa
 
 COCOAPODS: 1.9.3
