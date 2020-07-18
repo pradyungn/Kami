@@ -1,0 +1,4 @@
+flask
+pytesseract
+Pillow
+requests
