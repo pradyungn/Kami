@@ -10,6 +10,7 @@ export class AnimationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // Absolute non-apologetic jank
     setTimeout(() => {
       var button = document.getElementById("animation-compress-button");
 
@@ -22,12 +23,12 @@ export class AnimationComponent implements OnInit {
       setTimeout(() => {
         document.getElementById("animation-progress-bar").style.opacity = "0";
         button.style.backgroundColor = "";
-        button.style.color = "";
+        button.innerText = "Done!"
 
         document.getElementById("animation-content").style.display = "none";
         document.getElementById("animation-end").style.display = "flex";
         
-      }, 1500);
+      }, 2000);
     }, 2500);
   }
 

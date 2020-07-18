@@ -54,6 +54,10 @@
     width: 260px;
     height: 300px;
     transform: none !important;
+
+    mat-icon {
+      font-size: 36px;
+    }
   }
 
   .hidden {
