@@ -1,5 +1,7 @@
+import 'package:Kami/src/provider_api.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -7,15 +9,10 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  // TODO: Fetch from firebase
-  List<Item> items = [
-    Item(text: "Lorem ipsum dolor sit amet", title: "Very long book"),
-    Item(
-      text: "sldk sdlfh sldkf smkdf sbdln sndfklnds kd fdkf ",
-      title: "Short article",
-    ),
-    Item(text: "item", title: "idk", summary: "This has a summary!"),
-  ];
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,27 +28,39 @@ class HomeState extends State<Home> {
           ),
           IconButton(
             icon: const Icon(Icons.account_circle),
-            onPressed: () => showSheet(context, BottomSheetType.login),
+            onPressed: () async {
+              final api = Provider.of<ProviderAPI>(context, listen: false);
+              if (api.isLoggedIn) {
+                showSheet(context, BottomSheetType.account);
+              } else {
+                //Navigator.pushNamed(context, '/login');
+                await api.loginWithGoogle();
+                print('logged in = ${api.isLoggedIn}');
+                await api.fetchStoredTexts();
+              }
+            },
           ),
         ],
       ),
-      body: GridView.builder(
-        itemCount: items.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          childAspectRatio: 9 / 10,
+      body: Consumer<ProviderAPI>(
+        builder: (context, api, child) => GridView.builder(
+          itemCount: api.storedTexts.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: 9 / 10,
+          ),
+          itemBuilder: (context, i) {
+            if (i >= api.storedTexts.length) return null;
+            final item = api.storedTexts[i];
+            return InkWell(
+              child: ItemView(item),
+              onTap: () {
+                print('pressed ${item.title}');
+                Navigator.pushNamed(context, '/itemDetail', arguments: item);
+              },
+            );
+          },
         ),
-        itemBuilder: (context, i) {
-          if (i >= items.length) return null;
-          final item = items[i];
-          return InkWell(
-            child: ItemView(item),
-            onTap: () {
-              print('pressed ${item.title}');
-              Navigator.pushNamed(context, '/itemDetail', arguments: item);
-            },
-          );
-        },
       ),
     );
   }
@@ -78,9 +87,13 @@ class HomeState extends State<Home> {
                   Navigator.pop(context);
                 },
               );
-            case BottomSheetType.login:
+            case BottomSheetType.account:
               return LoginSheet(
-                onLogin: () => print('login'),
+                onLogout: () async {
+                  final api = Provider.of<ProviderAPI>(context, listen: false);
+                  await api.logout();
+                  Navigator.pop(context);
+                },
               );
             default:
               print('Reached unreachable state $state');
@@ -90,13 +103,13 @@ class HomeState extends State<Home> {
   }
 }
 
-enum BottomSheetType { none, login, add }
+enum BottomSheetType { none, account, add }
 
 class LoginSheet extends StatelessWidget {
   // TODO: Check whether user is logged in
-  final void Function() onLogin;
+  final void Function() onLogout;
 
-  LoginSheet({@required this.onLogin});
+  LoginSheet({@required this.onLogout});
 
   @override
   Widget build(BuildContext context) {
@@ -104,8 +117,8 @@ class LoginSheet extends StatelessWidget {
       shrinkWrap: true,
       children: [
         ListTile(
-          title: const Text('Login'),
-          onTap: onLogin,
+          title: const Text('Log out'),
+          onTap: onLogout,
         ),
       ],
     );
@@ -139,7 +152,7 @@ class AddSheet extends StatelessWidget {
 }
 
 class ItemView extends StatelessWidget {
-  final Item item;
+  final TextItem item;
 
   ItemView(this.item);
 
@@ -161,20 +174,4 @@ class ItemView extends StatelessWidget {
       ),
     );
   }
-}
-
-class Item {
-  final String /*!*/ id;
-  String /*!*/ text;
-  String /*!*/ title;
-  String /*?*/ summary;
-
-  Item({
-    @required this.id,
-    @required this.text,
-    @required this.title,
-    this.summary,
-  });
-
-  // TODO: Update firebase when properties are modified
 }

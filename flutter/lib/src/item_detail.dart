@@ -1,10 +1,10 @@
-import 'package:Kami/src/home.dart';
+import 'package:Kami/src/provider_api.dart';
 import 'package:flutter/material.dart';
 
 class ItemDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Item item = ModalRoute.of(context).settings.arguments;
+    final TextItem item = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text(item.title),
