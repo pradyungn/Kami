@@ -1,4 +1,5 @@
 import 'package:Kami/src/home.dart';
+import 'package:Kami/src/input.dart';
 import 'package:Kami/src/photo.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       home: Home(),
       routes: {
         '/photo': (_) => PhotoView(),
+        '/input': (_) => InputView(),
       },
     );
   }

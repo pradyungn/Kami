@@ -64,7 +64,13 @@ class HomeState extends State<Home> {
                   print(result);
                   Navigator.pop(context);
                 },
-                onInput: () => print('input'),
+                onInput: () async {
+                  print('input');
+                  final result =
+                      await Navigator.pushNamed(context, '/input') as String;
+                  print(result);
+                  Navigator.pop(context);
+                },
               );
             case BottomSheetType.login:
               return LoginSheet(
