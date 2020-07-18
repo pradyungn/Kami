@@ -6,9 +6,10 @@ import { SharedModule } from '../shared/shared.module';
 
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
+import { AnimationComponent } from './animation/animation.component';
 
 @NgModule({
-  declarations: [HomeComponent, LoginComponent],
+  declarations: [HomeComponent, LoginComponent, AnimationComponent],
   imports: [
     CommonModule, 
     SharedModule, 

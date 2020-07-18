@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
+import { CameraComponent } from './camera/camera.component';
+import { FileComponent } from './file/file.component';
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, CameraComponent, FileComponent],
   imports: [
     CommonModule,
     SharedModule

@@ -1,6 +1,6 @@
 <div class="dashboard flex-column">
   <mat-toolbar class="flex-row align-center">
-    <button mat-icon-button aria-label="Toggle Menu">
+    <button mat-icon-button aria-label="Toggle Menu" (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Kami</span>
@@ -32,7 +32,7 @@
     </button>
   </mat-menu>
   <mat-sidenav-container class="dashboard-content-container flex">
-    <mat-sidenav mode="side" opened>
+    <mat-sidenav #sidenav mode="side" opened>
       <button mat-stroked-button>All Notes</button>
       <hr>
     </mat-sidenav>

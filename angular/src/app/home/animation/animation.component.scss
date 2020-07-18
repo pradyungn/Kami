@@ -1,0 +1,58 @@
+.animation {
+  position: absolute;
+  right: 0;
+  top: 25%;
+  z-index: -1;
+
+  border-radius: 10px;
+  box-shadow: #aaa 0 3px 30px;
+  height: 500px;
+  width: 350px;
+  padding: 20px;
+
+  button {
+    background-color: var(--light-blue);
+    color: var(--light-blue);
+    width: 100px;
+  }
+
+  .animation-content {
+    position: relative;
+
+    div {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+
+      margin: auto;
+
+      animation: fade-in 1s ease forwards;
+      background-color: var(--white);
+      box-shadow: #aaa 0 2px 8px;
+      width: 220px;
+      height: 250px;
+
+      @for $i from -2 through 2 {
+        &:nth-of-type(#{$i + 2}) {
+          animation-delay: #{($i + 2) * 300}ms;
+          transform: translate(#{$i * 35}px, #{$i * 50}px);
+        }
+      }
+    }
+  }
+
+  .hidden {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
