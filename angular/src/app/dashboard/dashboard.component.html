@@ -22,11 +22,11 @@
     </a>
   </mat-menu>
   <mat-menu #createMenu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="showCamera()">
       <mat-icon>camera_alt</mat-icon>
       <span>Use your Camera</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="showFile()">
       <mat-icon>image</mat-icon>
       <span>Upload a File</span>
     </button>
@@ -61,4 +61,6 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
+  <dashboard-camera [shown]="showCameraDialog" (closeEvent)="hideDialogs()"></dashboard-camera>
+  <dashboard-file [shown]="showFileDialog" (closeEvent)="hideDialogs()"></dashboard-file>
 </div>

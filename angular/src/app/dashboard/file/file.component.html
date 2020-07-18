@@ -1,1 +1,5 @@
-<p>file works!</p>
+<div *ngIf="shown" (click)="closeDialog()" class="page-overlay flex-column justify-center align-center">
+  <mat-card (click)="stopPropagation($event)">
+    <mat-card-title>File upload</mat-card-title>
+  </mat-card>
+</div>
