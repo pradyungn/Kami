@@ -69,7 +69,8 @@ def _create_idf_matrix(freq_matrix, count_doc_per_words, total_documents):
         idf_table = {}
 
         for word in f_table.keys():
-            idf_table[word] = math.log10(total_documents / float(count_doc_per_words[word]))
+            idf_table[word] = math.log10(
+                total_documents / float(count_doc_per_words[word]))
 
         idf_matrix[sent] = idf_table
 
@@ -86,7 +87,8 @@ def _score_sentences(tf_idf_matrix) -> dict:
         for word, score in f_table.items():
             total_score_per_sentence += score
 
-        sentenceValue[sent] = total_score_per_sentence / count_words_in_sentence
+        sentenceValue[sent] = total_score_per_sentence / \
+            count_words_in_sentence
 
     return sentenceValue
 
@@ -104,7 +106,8 @@ def _find_average_score(sentenceValue) -> int:
 def _create_tf_idf_matrix(tf_matrix, idf_matrix):
     tf_idf_matrix = {}
 
-    for (sent1, f_table1), (sent2, f_table2) in zip(tf_matrix.items(), idf_matrix.items()):
+    for (sent1, f_table1), (sent2, f_table2) in zip(tf_matrix.items(),
+                                                    idf_matrix.items()):
 
         tf_idf_table = {}
 
@@ -144,9 +147,8 @@ def parse():
     ss = _score_sentences(tdi)
     th = _find_average_score(ss)
     summary = _generate_summary(sinp, ss, th)
-    print(summary)
 
-    return "shithead"
+    return jsonify({"output": summary})
 
 
 if __name__ == '__main__':
