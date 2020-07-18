@@ -54,9 +54,17 @@ class HomeState extends State<Home> {
         builder: (context) {
           switch (state) {
             case BottomSheetType.add:
-              return AddSheet();
+              return AddSheet(
+                onCamera: () async {
+                  await Navigator.pushNamed(context, '/camera');
+                  Navigator.pop(context);
+                },
+                onInput: () => print('input'),
+              );
             case BottomSheetType.login:
-              return LoginSheet();
+              return LoginSheet(
+                onLogin: () => print('login'),
+              );
             default:
               print('Reached unreachable state $state');
               return null;
@@ -69,6 +77,9 @@ enum BottomSheetType { none, login, add }
 
 class LoginSheet extends StatelessWidget {
   // TODO: Check whether user is logged in
+  final void Function() onLogin;
+
+  LoginSheet({@required this.onLogin});
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +88,7 @@ class LoginSheet extends StatelessWidget {
       children: [
         ListTile(
           title: const Text('Login'),
-          onTap: () => print('login'),
+          onTap: onLogin,
         ),
       ],
     );
@@ -85,6 +96,11 @@ class LoginSheet extends StatelessWidget {
 }
 
 class AddSheet extends StatelessWidget {
+  final void Function() onCamera;
+  final void Function() onInput;
+
+  AddSheet({@required this.onCamera, @required this.onInput});
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -93,12 +109,12 @@ class AddSheet extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.camera_alt),
           title: const Text('Take a picture of text'),
-          onTap: () => print('camera'),
+          onTap: onCamera,
         ),
         ListTile(
           leading: const Icon(Icons.insert_drive_file),
           title: const Text('Input text directly'),
-          onTap: () => print('input'),
+          onTap: onInput,
         ),
       ],
     );

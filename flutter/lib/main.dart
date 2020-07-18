@@ -1,3 +1,4 @@
+import 'package:Kami/src/camera.dart';
 import 'package:Kami/src/home.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Home(),
-      routes: {},
+      routes: {
+        '/camera': (_) => CameraView(),
+      },
     );
   }
 }
