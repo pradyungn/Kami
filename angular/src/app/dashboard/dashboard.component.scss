@@ -1,0 +1,35 @@
+.dashboard {
+  height: 100vh;
+}
+
+mat-toolbar {
+  background-color: var(--light-blue);
+  color: var(--white);
+}
+
+.dashboard-content-container {
+  mat-sidenav {
+    padding: 20px;
+    padding-right: 30px;
+  }
+  
+  mat-sidenav-content {
+    padding: 20px;
+
+    mat-card {
+      height: 150px;
+      width: 150px;
+      text-align: center;
+
+      mat-icon {
+        height: 72px;
+        width: 72px;
+        font-size: 72px;
+      }
+
+      mat-card-content {
+        font-size: 16px;
+      }
+    }
+  }
+}

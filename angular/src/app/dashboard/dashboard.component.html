@@ -1,15 +1,64 @@
-<div>
-  <mat-toolbar [color]="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+<div class="dashboard flex-column">
+  <mat-toolbar class="flex-row align-center">
+    <button mat-icon-button aria-label="Toggle Menu">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
+    <span>Kami</span>
+    <button mat-icon-button [matMenuTriggerFor]="createMenu" class="nav-right" aria-label="Add a new note">
+      <mat-icon>add</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="accountMenu" aria-label="View your profile">
+      <mat-icon>account_circle</mat-icon>
     </button>
   </mat-toolbar>
+  <mat-menu #accountMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>Account Settings</span>
+    </button>
+    <a mat-menu-item routerLink="/home">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Log Out</span>
+    </a>
+  </mat-menu>
+  <mat-menu #createMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>camera_alt</mat-icon>
+      <span>Use your Camera</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>image</mat-icon>
+      <span>Upload a File</span>
+    </button>
+  </mat-menu>
+  <mat-sidenav-container class="dashboard-content-container flex">
+    <mat-sidenav mode="side" opened>
+      <button mat-stroked-button>All Notes</button>
+      <hr>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="flex-row flex-wrap flex-list">
+        <mat-card>
+          <mat-icon>insert_drive_file</mat-icon>
+          <mat-card-content>Pog</mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-icon>insert_drive_file</mat-icon>
+          <mat-card-content>Pog</mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-icon>insert_drive_file</mat-icon>
+          <mat-card-content>Pog</mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-icon>insert_drive_file</mat-icon>
+          <mat-card-content>Pog</mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-icon>insert_drive_file</mat-icon>
+          <mat-card-content>Pog</mat-card-content>
+        </mat-card>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

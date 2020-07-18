@@ -1,5 +1,7 @@
-import 'package:Kami/src/camera.dart';
 import 'package:Kami/src/home.dart';
+import 'package:Kami/src/input.dart';
+import 'package:Kami/src/item_detail.dart';
+import 'package:Kami/src/photo.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +20,9 @@ class MyApp extends StatelessWidget {
       ),
       home: Home(),
       routes: {
-        '/camera': (_) => CameraView(),
+        '/photo': (_) => PhotoView(),
+        '/input': (_) => InputView(),
+        '/itemDetail': (_) => ItemDetailView(),
       },
     );
   }

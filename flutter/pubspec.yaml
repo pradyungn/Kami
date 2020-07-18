@@ -24,8 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  camera: ^0.5.8+2
+  multi_image_picker: ^4.6.5
+  animations: ^1.1.1
 
 dev_dependencies:
   flutter_test:

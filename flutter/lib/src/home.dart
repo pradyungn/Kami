@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -38,11 +39,18 @@ class HomeState extends State<Home> {
         itemCount: items.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
+          childAspectRatio: 9 / 10,
         ),
         itemBuilder: (context, i) {
           if (i >= items.length) return null;
           final item = items[i];
-          return ItemView(item);
+          return InkWell(
+            child: ItemView(item),
+            onTap: () {
+              print('pressed ${item.title}');
+              Navigator.pushNamed(context, '/itemDetail', arguments: item);
+            },
+          );
         },
       ),
     );
@@ -55,11 +63,20 @@ class HomeState extends State<Home> {
           switch (state) {
             case BottomSheetType.add:
               return AddSheet(
-                onCamera: () async {
-                  await Navigator.pushNamed(context, '/camera');
+                onPhoto: () async {
+                  print('photo');
+                  final result = await Navigator.pushNamed(context, '/photo')
+                      as List<Asset>;
+                  print(result);
                   Navigator.pop(context);
                 },
-                onInput: () => print('input'),
+                onInput: () async {
+                  print('input');
+                  final result =
+                      await Navigator.pushNamed(context, '/input') as String;
+                  print(result);
+                  Navigator.pop(context);
+                },
               );
             case BottomSheetType.login:
               return LoginSheet(
@@ -96,10 +113,10 @@ class LoginSheet extends StatelessWidget {
 }
 
 class AddSheet extends StatelessWidget {
-  final void Function() onCamera;
+  final void Function() onPhoto;
   final void Function() onInput;
 
-  AddSheet({@required this.onCamera, @required this.onInput});
+  AddSheet({@required this.onPhoto, @required this.onInput});
 
   @override
   Widget build(BuildContext context) {
@@ -108,8 +125,8 @@ class AddSheet extends StatelessWidget {
       children: [
         ListTile(
           leading: const Icon(Icons.camera_alt),
-          title: const Text('Take a picture of text'),
-          onTap: onCamera,
+          title: const Text('Scan text from photos'),
+          onTap: onPhoto,
         ),
         ListTile(
           leading: const Icon(Icons.insert_drive_file),
@@ -137,7 +154,9 @@ class ItemView extends StatelessWidget {
             size: 48,
           ),
           const SizedBox(height: 20),
-          Text("${item.title}"),
+          Expanded(
+            child: Text("${item.title}"),
+          ),
         ],
       ),
     );

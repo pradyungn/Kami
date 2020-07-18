@@ -43,7 +43,7 @@
 	<false/>
 	<key>NSCameraUsageDescription</key>
 	<string>Scan text using your camera</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Not necessary</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Scan text from photos</string>
 </dict>
 </plist>
