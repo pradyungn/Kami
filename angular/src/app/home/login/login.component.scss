@@ -1,8 +1,5 @@
 .login-wrapper {
-  position: absolute;
-  top: 80px;
-  right: 10px;
-
+  margin-top: 10px;
   padding: 20px;
   width: 280px;
 
@@ -28,5 +25,11 @@
     &:hover {
       border-color: var(--dark-blue);
     }
+  }
+
+  @media (min-width: 768px) {
+    position: absolute;
+    top: 80px;
+    right: 10px;
   }
 }

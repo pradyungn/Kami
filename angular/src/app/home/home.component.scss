@@ -16,6 +16,7 @@ nav {
     &:hover, &:focus {
       border-color: var(--dark-blue);
       background-color: var(--dark-blue);
+      color: var(--white);
     }
 
     @media (min-width: 768px) {
@@ -34,7 +35,7 @@ nav {
 }
 
 .header {
-  height: 500px;
+  height: 80vh;
 
   h1 {
     font-size: 72px;
