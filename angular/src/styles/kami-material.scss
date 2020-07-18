@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$kami-primary: mat-palette($mat-indigo);
+$kami-accent:  mat-palette($mat-indigo);
+
+$kami-app-theme: mat-light-theme((
+  color: (
+    primary: $kami-primary,
+    accent: $kami-accent
+  )
+));
+
+@include angular-material-theme($kami-app-theme);

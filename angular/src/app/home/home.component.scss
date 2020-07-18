@@ -10,14 +10,12 @@ nav {
   }
 
   .btn, .btn-outline {
-    border-color: var(--light-blue);
     width: 300px;
-    padding: 10px 25px;
+    padding: 5px 25px;
 
     &:hover, &:focus {
       border-color: var(--dark-blue);
       background-color: var(--dark-blue);
-      color: #fff;
     }
 
     @media (min-width: 768px) {
@@ -27,6 +25,7 @@ nav {
 
   .btn {
     background-color: var(--light-blue);
+    color: var(--white);
   }
 
   .btn-outline {
