@@ -1,3 +1,48 @@
-:host {
-  
+.container-wide {
+  position: relative;
+}
+
+nav {
+  .nav-brand {
+    color: var(--black);
+    font-size: 24px;
+    text-decoration: none;
+  }
+
+  .btn, .btn-outline {
+    border-color: var(--light-blue);
+    width: 300px;
+    padding: 10px 25px;
+
+    &:hover, &:focus {
+      border-color: var(--dark-blue);
+      background-color: var(--dark-blue);
+      color: #fff;
+    }
+
+    @media (min-width: 768px) {
+      width: unset;
+    }
+  }
+
+  .btn {
+    background-color: var(--light-blue);
+  }
+
+  .btn-outline {
+    color: var(--light-blue);
+  }
+}
+
+.header {
+  height: 500px;
+
+  h1 {
+    font-size: 72px;
+    margin: 0;
+  }
+
+  p {
+    font-size: 36px;
+  }
 }

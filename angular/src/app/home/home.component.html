@@ -1,7 +1,12 @@
-<div class="container">
-  <h1 class="title">
-    {{ 'PAGES.HOME.TITLE' | translate }}
-  </h1>
-
-  <a routerLink="/detail">{{ 'PAGES.HOME.GO_TO_DETAIL' | translate }}</a>
+<div class="container-wide">
+  <nav class="flex-smart flex-list align-center">
+    <a routerLink="/" class="nav-brand">ｶﾐ Kami</a>
+    <button class="btn-outline nav-right">Login</button>
+    <button class="btn">Register</button>
+  </nav>
+  <header class="header flex-column justify-center align-start">
+    <h1>ｶﾐ Kami</h1>
+    <p>It does stuff.</p>
+  </header>
+  <home-login></home-login>
 </div>
