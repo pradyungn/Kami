@@ -1,0 +1,20 @@
+:root {
+  --white: #FFFFF2;
+  --black: #0E0F19;
+  --dark-blue: #243F5F;
+  --light-blue: #3A6EA5;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+
+  height: 100%;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+@import 'styles/lib/flexcore.min.scss';
+
+/* Material Theming */
+
+@import 'styles/kami-material.scss'
