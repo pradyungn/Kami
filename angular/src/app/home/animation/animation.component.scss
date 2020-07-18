@@ -1,4 +1,5 @@
 .animation {
+  animation: fade-in-up 1s ease;
   position: absolute;
   right: 0;
   top: 25%;
@@ -14,10 +15,15 @@
     background-color: var(--light-blue);
     color: var(--light-blue);
     width: 100px;
+    
+    > .mat-button-focus-overlay {
+      transition-duration: 1s;
+    }
   }
 
-  .animation-content {
+  #animation-content, #animation-end {
     position: relative;
+    transition-duration: 0.5s;
 
     div {
       position: absolute;
@@ -36,15 +42,27 @@
 
       @for $i from -2 through 2 {
         &:nth-of-type(#{$i + 2}) {
-          animation-delay: #{($i + 2) * 300}ms;
+          animation-delay: #{($i + 2) * 200}ms;
           transform: translate(#{$i * 35}px, #{$i * 50}px);
         }
       }
     }
   }
 
+  #animation-end div {
+    opacity: 0;
+    width: 260px;
+    height: 300px;
+    transform: none !important;
+  }
+
   .hidden {
     opacity: 0;
+    transition-duration: 0.2s;
+  }
+
+  .display-hidden {
+    display: none;
   }
 }
 
@@ -54,5 +72,16 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

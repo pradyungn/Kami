@@ -1,11 +1,14 @@
 <div class="animation flex-column" aria-hidden="true">
   <div class="flex-row flex-list align-center">
-    <mat-progress-bar class="flex hidden"></mat-progress-bar>
-    <button mat-raised-button>Compress</button>
+    <mat-progress-bar id="animation-progress-bar" mode="indeterminate" class="flex hidden"></mat-progress-bar>
+    <button mat-raised-button id="animation-compress-button">Summarize</button>
   </div>
-  <div class="flex animation-content">
+  <div id="animation-content" class="flex">
     <div class="hidden"></div>
+    <div id="final" class="hidden"></div>
     <div class="hidden"></div>
-    <div class="hidden"></div>
+  </div>
+  <div id="animation-end" class="flex display-hidden">
+    <div></div>
   </div>
 </div>
