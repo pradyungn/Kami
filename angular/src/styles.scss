@@ -1,0 +1,41 @@
+:root {
+  --white: #FFFFF2;
+  --black: #0E0F19;
+  --dark-blue: #243F5F;
+  --light-blue: #3A6EA5;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+
+  height: 100%;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+.app {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: unset;
+  }
+}
+
+.download-prompt {
+  background-color: var(--white);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+@import 'styles/lib/flexcore.min.scss';
+
+/* Material Theming */
+
+@import 'styles/kami-material.scss'

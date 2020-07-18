@@ -1,0 +1,48 @@
+.container-wide {
+  position: relative;
+}
+
+nav {
+  .nav-brand {
+    color: var(--black);
+    font-size: 24px;
+    text-decoration: none;
+  }
+
+  .btn, .btn-outline {
+    width: 300px;
+    padding: 5px 25px;
+
+    &:hover, &:focus {
+      border-color: var(--dark-blue);
+      background-color: var(--dark-blue);
+      color: var(--white);
+    }
+
+    @media (min-width: 768px) {
+      width: unset;
+    }
+  }
+
+  .btn {
+    background-color: var(--light-blue);
+    color: var(--white);
+  }
+
+  .btn-outline {
+    color: var(--light-blue);
+  }
+}
+
+.header {
+  height: 80vh;
+
+  h1 {
+    font-size: 72px;
+    margin: 0;
+  }
+
+  p {
+    font-size: 36px;
+  }
+}

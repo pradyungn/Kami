@@ -1,0 +1,21 @@
+<div class="login-wrapper">
+  <p>Log In or Register With:</p>
+  <div class="flex-column flex-list">
+    <a mat-stroked-button routerLink="/dashboard" class="provider flex-row align-center justify-center">
+      <img src="assets/fontawesome/brands/google.svg" alt="(G)"> Google
+    </a>
+    <p>or with a Kami account</p>
+    <form class="login-form flex-column">
+      <mat-form-field appearance="outline">
+        <mat-label>Your Email</mat-label>
+        <input matInput placeholder="Email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Your Password</mat-label>
+        <input matInput type="password" placeholder="Password">
+      </mat-form-field>
+      <button mat-stroked-button class="provider" type="submit">Log In</button>
+    </form>
+  </div>
+  <br>
+</div>

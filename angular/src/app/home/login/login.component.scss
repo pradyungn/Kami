@@ -1,0 +1,35 @@
+.login-wrapper {
+  margin-top: 10px;
+  padding: 20px;
+  width: 280px;
+
+  border-radius: 2px;
+  box-shadow: var(--black) 0 3px 6px;
+
+  p {
+    margin-top: 0;
+  }
+
+  .provider {
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 18px;
+    padding: 6px;
+    
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    &:hover {
+      border-color: var(--dark-blue);
+    }
+  }
+
+  @media (min-width: 768px) {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+  }
+}
