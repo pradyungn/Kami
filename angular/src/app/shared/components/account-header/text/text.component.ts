@@ -31,6 +31,8 @@ export class TextComponent implements OnInit {
         "text": this.text,
         "summary": output
       });
+
+      this.closeDialog();
     });
   }
 

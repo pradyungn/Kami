@@ -43,6 +43,8 @@ export class FileComponent implements OnInit {
         "text": text,
         "summary": output
       });
+
+      this.closeDialog();
     });
   }
 

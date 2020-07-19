@@ -23,6 +23,8 @@ export class DashboardComponent implements OnInit {
     // Get user collection
     this.db = firebase.firestore();
     this.db.collection(uid).onSnapshot(qs => {
+      this.notes = [];
+
       qs.forEach((doc) => {
         let note = <Kami$Note><unknown>doc.data();
         note.id = doc.id;
