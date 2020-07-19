@@ -9,7 +9,7 @@
       <div class="flex-row flex-wrap flex-list">
         <a [routerLink]="['/note', file.id]" *ngFor="let file of this.notes">
           <mat-card class="flex-column justify-between">
-            <mat-icon>insert_drive_file</mat-icon>
+            <img src="assets/img/fileicon.png" alt="File">
             <mat-card-content>{{file.title}}</mat-card-content>
           </mat-card>
         </a>
