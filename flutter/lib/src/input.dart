@@ -1,4 +1,4 @@
-import 'package:Kami/src/fake_provider.dart';
+import 'package:Kami/src/firebase_provider.dart';
 import 'package:Kami/src/provider_api.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +47,7 @@ class _InputViewState extends State<InputView>
 
   Widget _getBody(BuildContext context) {
     if (_isLoading) {
-      return Center(child: CircularProgressIndicator(value: -1));
+      return Center(child: CircularProgressIndicator(value: null));
     } else {
       return Padding(
         padding: const EdgeInsets.all(8),
@@ -104,7 +104,7 @@ class _InputViewState extends State<InputView>
     // Make API call and return hydrated item.
     final api = Provider.of<ProviderAPI>(context, listen: false);
     // TODO: Refactor to FirebaseItem
-    final item = FakeItem(text: _tc.text, title: _title.text);
+    final item = FirebaseItem(text: _tc.text, title: _title.text);
     final item2 = await api.storeText(item);
     Navigator.pop(context, item2);
   }
