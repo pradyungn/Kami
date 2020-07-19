@@ -1,6 +1,6 @@
 <div class="dashboard flex-column">
   <mat-toolbar class="flex-row align-center">
-    <button mat-icon-button aria-label="Toggle Menu">
+    <button mat-icon-button aria-label="Toggle Menu" (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Kami</span>
@@ -22,17 +22,17 @@
     </a>
   </mat-menu>
   <mat-menu #createMenu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="showCamera()">
       <mat-icon>camera_alt</mat-icon>
       <span>Use your Camera</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="showFile()">
       <mat-icon>image</mat-icon>
       <span>Upload a File</span>
     </button>
   </mat-menu>
   <mat-sidenav-container class="dashboard-content-container flex">
-    <mat-sidenav mode="side" opened>
+    <mat-sidenav #sidenav mode="side" opened>
       <button mat-stroked-button>All Notes</button>
       <hr>
     </mat-sidenav>
@@ -61,4 +61,6 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
+  <dashboard-camera [shown]="showCameraDialog" (closeEvent)="hideDialogs()"></dashboard-camera>
+  <dashboard-file [shown]="showFileDialog" (closeEvent)="hideDialogs()"></dashboard-file>
 </div>

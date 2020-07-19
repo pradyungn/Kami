@@ -1,0 +1,87 @@
+.animation {
+  animation: fade-in-up 1s ease;
+  position: absolute;
+  right: 0;
+  top: 25%;
+  z-index: -1;
+
+  border-radius: 10px;
+  box-shadow: #aaa 0 3px 30px;
+  height: 500px;
+  width: 350px;
+  padding: 20px;
+
+  button {
+    background-color: var(--light-blue);
+    color: var(--light-blue);
+    width: 100px;
+    
+    > .mat-button-focus-overlay {
+      transition-duration: 1s;
+    }
+  }
+
+  #animation-content, #animation-end {
+    position: relative;
+    transition-duration: 0.5s;
+
+    div {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+
+      margin: auto;
+
+      animation: fade-in 1s ease forwards;
+      background-color: var(--white);
+      box-shadow: #aaa 0 2px 8px;
+      width: 220px;
+      height: 250px;
+
+      @for $i from -2 through 2 {
+        &:nth-of-type(#{$i + 2}) {
+          animation-delay: #{($i + 2) * 200}ms;
+          transform: translate(#{$i * 35}px, #{$i * 50}px);
+        }
+      }
+    }
+  }
+
+  #animation-end div {
+    opacity: 0;
+    width: 260px;
+    height: 300px;
+    transform: none !important;
+
+    mat-icon {
+      font-size: 36px;
+    }
+  }
+
+  .hidden {
+    opacity: 0;
+    transition-duration: 0.2s;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

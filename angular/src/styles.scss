@@ -3,6 +3,8 @@
   --black: #0E0F19;
   --dark-blue: #243F5F;
   --light-blue: #3A6EA5;
+
+  --box-shadow: #000a;
 }
 
 html, body {
@@ -34,8 +36,9 @@ html, body {
   }
 }
 
-@import 'styles/lib/flexcore.min.scss';
+/* Utility */
+@import 'styles/utils/flexcore.min.scss';
+@import 'styles/utils/utility.scss';
 
 /* Material Theming */
-
 @import 'styles/kami-material.scss'
