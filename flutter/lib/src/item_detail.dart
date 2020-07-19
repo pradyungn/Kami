@@ -44,8 +44,7 @@ class _ItemDetailViewState extends State<ItemDetailView> {
                 ),
               );
               if (shouldDelete) {
-                final api = Provider.of<ProviderAPI>(context, listen: false);
-                await api.deleteText(item);
+                await item.delete();
                 Navigator.pop(context);
               }
             },

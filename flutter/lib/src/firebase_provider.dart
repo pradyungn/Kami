@@ -151,8 +151,7 @@ class FirebaseProvider extends ChangeNotifier
     return text2;
   }
 
-  @override
-  Future<void> deleteText(FirebaseItem text) async {
+  Future<void> _deleteText(FirebaseItem text) async {
     if (!isLoggedIn) return;
     _storedTexts.removeWhere((element) => element == text);
     final c = _store.collection(_user.uid);
@@ -214,6 +213,11 @@ class FirebaseItem extends TextItem {
   @override
   Future<void> update() async {
     await _provider.storeText(this);
+  }
+
+  @override
+  Future<void> delete() async {
+    await _provider._deleteText(this);
   }
 
   FirebaseItem _hydrate(String id, FirebaseProvider provider) {
