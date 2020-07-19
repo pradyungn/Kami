@@ -169,7 +169,7 @@ def ocr():
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     image = cv.adaptiveThreshold(image, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 31, 2)
     image = cv.bilateralFilter(image,9,75,75)
-    text = pytesseract.image_to_string(image)
+    text = pytesseract.image_to_string(image, lang="eng")
     return jsonify({"output": text})
 
 
