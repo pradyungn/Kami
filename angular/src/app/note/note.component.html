@@ -10,7 +10,7 @@
         <mat-icon>delete</mat-icon>
       </button>
     </div>
-    <div class="flex-smart flex-list">
+    <div class="flex-smart flex-list notes">
       <div class="flex">
         <h2>Original Text</h2>
         <hr>
@@ -20,6 +20,10 @@
         <h2>Summarized Text</h2>
         <hr>
         <p>{{note?.summary}}</p>
+        <div *ngIf="!note?.summary">
+          <p>Looks like there's currently no summary for this text. Want to generate one?</p>
+          <button mat-raised-button (click)="generateSummary()">Generate Summary</button>
+        </div>
       </div>
     </div>
   </div>

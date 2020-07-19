@@ -18,9 +18,11 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    let uid = firebase.auth().currentUser.uid;
+    
     // Get user collection
     this.db = firebase.firestore();
-    this.db.collection(firebase.auth().currentUser.uid).get().then(qs => {
+    this.db.collection(uid).onSnapshot(qs => {
       qs.forEach((doc) => {
         let note = <Kami$Note><unknown>doc.data();
         note.id = doc.id;
