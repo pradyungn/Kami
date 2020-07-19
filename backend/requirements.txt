@@ -2,3 +2,4 @@ flask
 pytesseract
 Pillow
 requests
+nltk
