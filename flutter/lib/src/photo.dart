@@ -35,7 +35,7 @@ class _PhotoViewState extends State<PhotoView> {
 
   Widget _getBody(BuildContext context) {
     if (_isLoading) {
-      return Center(child: CircularProgressIndicator(value: -1));
+      return const Center(child: const CircularProgressIndicator(value: null));
     } else {
       return Padding(
         padding: const EdgeInsets.all(16.0),
@@ -81,8 +81,8 @@ class _PhotoViewState extends State<PhotoView> {
                             itemCount: data.length,
                           );
                         } else {
-                          return const Center(
-                            child: const CircularProgressIndicator(
+                          return Center(
+                            child: CircularProgressIndicator(
                               value: null,
                             ),
                           );

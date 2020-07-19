@@ -1,4 +1,4 @@
-import 'package:Kami/src/fake_provider.dart';
+import 'package:Kami/src/firebase_provider.dart';
 import 'package:Kami/src/provider_api.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -119,15 +119,15 @@ class HomeState extends State<Home> {
               return AddSheet(
                 onPhoto: () async {
                   print('photo');
-                  final result =
-                      await Navigator.pushNamed(context, '/photo') as FakeItem;
+                  final result = await Navigator.pushNamed(context, '/photo')
+                      as FirebaseItem;
                   print(result);
                   Navigator.pop(context);
                 },
                 onInput: () async {
                   print('input');
-                  final result =
-                      await Navigator.pushNamed(context, '/input') as FakeItem;
+                  final result = await Navigator.pushNamed(context, '/input')
+                      as FirebaseItem;
                   print(result);
                   Navigator.pop(context);
                 },
@@ -148,6 +148,8 @@ class HomeState extends State<Home> {
                     print('Failed to login');
                   }
                   Navigator.pop(context);
+                  final api = Provider.of<ProviderAPI>(context, listen: false);
+                  await api.fetchStoredTexts();
                 },
                 onSignup: () async {
                   final r = await Navigator.pushNamed(context, '/signup');
@@ -155,6 +157,8 @@ class HomeState extends State<Home> {
                     print('Failed to sign up');
                   }
                   Navigator.pop(context);
+                  final api = Provider.of<ProviderAPI>(context, listen: false);
+                  await api.fetchStoredTexts();
                 },
                 onLoginWithGoogle: () async {
                   final api = Provider.of<ProviderAPI>(context, listen: false);
@@ -163,6 +167,7 @@ class HomeState extends State<Home> {
                     print('Failed to login with google');
                   }
                   Navigator.pop(context);
+                  await api.fetchStoredTexts();
                 },
               );
             default:
@@ -265,9 +270,10 @@ class ItemView extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
-          const Icon(
-            Icons.insert_drive_file,
-            size: 48,
+          Image.asset(
+            'assets/file_icon.png',
+            width: 48,
+            height: 48,
           ),
           const SizedBox(height: 20),
           Expanded(

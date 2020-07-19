@@ -29,6 +29,9 @@ abstract class ProviderAPI<Item extends TextItem> extends ChangeNotifier {
   /// with an ID which can be updated.
   Future<Item> storeText(Item text);
 
+  /// Deletes the given text from the remote database.
+  Future<void> deleteText(Item text);
+
   /// The stored texts. (cached)
   List<Item> get storedTexts;
 
