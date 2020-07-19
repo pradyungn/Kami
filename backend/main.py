@@ -136,7 +136,7 @@ def _generate_summary(sentences, sentenceValue, threshold):
     return summary
 
 
-@app.route('/nlp', methods=['GET'])
+@app.route('/nlp', methods=['POST'])
 def parse(init=""):
     if init != "":
         inp = init
@@ -158,7 +158,7 @@ def parse(init=""):
     return jsonify({"output": summary})
 
 
-@app.route("/ocr", methods=['GET'])
+@app.route("/ocr", methods=['POST'])
 def ocr():
     encode_string = request.get_json()["input"]
     decode_string = base64.urlsafe_b64decode(encode_string)
