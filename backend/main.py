@@ -7,7 +7,7 @@ from PIL import Image
 import io
 import base64
 import pytesseract
-import opencv-python as cv
+import cv2 as cv
 app = Flask(__name__)
 
 download('stopwords')
