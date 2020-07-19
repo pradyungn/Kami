@@ -6,7 +6,7 @@
   z-index: -1;
 
   border-radius: 10px;
-  box-shadow: #aaa 0 3px 30px;
+  box-shadow: var(--box-shadow) 0 3px 30px;
   height: 500px;
   width: 350px;
   padding: 20px;
@@ -36,7 +36,7 @@
 
       animation: fade-in 1s ease forwards;
       background-color: var(--white);
-      box-shadow: #aaa 0 2px 8px;
+      box-shadow: var(--box-shadow) 0 2px 8px;
       width: 220px;
       height: 250px;
 

@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
         let note = <Kami$Note><unknown>doc.data();
         note.id = doc.id;
         this.notes.push(note);
-      })
+      });
     });
   }
 }
