@@ -30,6 +30,13 @@ class FakeProvider extends ChangeNotifier implements ProviderAPI<FakeItem> {
   }
 
   @override
+  Future<bool> signup(String email, String password) async {
+    _isLoggedIn = true;
+    notifyListeners();
+    return true;
+  }
+
+  @override
   Future<bool> loginWithGoogle() async {
     _isLoggedIn = true;
     notifyListeners();
