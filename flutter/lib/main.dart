@@ -72,6 +72,7 @@ class MyApp extends StatelessWidget {
       value: provider,
       child: Consumer<ThemeSwitcher>(
         builder: (context, api, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Kami',
           theme: lightTheme,
           darkTheme: darkTheme,
