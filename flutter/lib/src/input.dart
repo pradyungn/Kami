@@ -1,5 +1,8 @@
+import 'package:Kami/src/fake_provider.dart';
+import 'package:Kami/src/provider_api.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class InputView extends StatefulWidget {
   @override
@@ -10,6 +13,8 @@ class _InputViewState extends State<InputView>
     with SingleTickerProviderStateMixin {
   TextEditingController _tc;
   AnimationController _ac;
+  bool _isLoading = false;
+  TextEditingController _title;
 
   @override
   void initState() {
@@ -20,6 +25,7 @@ class _InputViewState extends State<InputView>
       duration: const Duration(milliseconds: 700),
       reverseDuration: const Duration(milliseconds: 300),
     );
+    _title = TextEditingController();
   }
 
   @override
@@ -40,50 +46,66 @@ class _InputViewState extends State<InputView>
   }
 
   Widget _getBody(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Stack(
-        alignment: Alignment.bottomRight,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text('Enter your text below'),
-              Expanded(
-                child: TextField(
-                  controller: _tc,
-                  onChanged: (_) => setState(() {
-                    if (_tc.text.trim().isNotEmpty) {
-                      _ac.forward();
-                    } else {
-                      _ac.reverse();
-                    }
-                  }),
+    if (_isLoading) {
+      return Center(child: CircularProgressIndicator(value: -1));
+    } else {
+      return Padding(
+        padding: const EdgeInsets.all(8),
+        child: Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextFormField(
+                  controller: _title,
                   autofocus: true,
-                  expands: true,
-                  minLines: null,
-                  maxLines: null,
+                  decoration: InputDecoration(labelText: 'Title'),
+                  validator: (value) =>
+                      value.isEmpty ? 'Please enter a title' : null,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                ),
+                const SizedBox(height: 10),
+                const Text('Enter your text below'),
+                Expanded(
+                  child: TextField(
+                    controller: _tc,
+                    onChanged: (_) => setState(() {
+                      if (_tc.text.trim().isNotEmpty) {
+                        _ac.forward();
+                      } else {
+                        _ac.reverse();
+                      }
+                    }),
+                    autofocus: true,
+                    expands: true,
+                    minLines: null,
+                    maxLines: null,
+                  ),
+                ),
+              ],
+            ),
+            if (_tc.text.trim().isNotEmpty && _title.text.isNotEmpty)
+              FadeScaleTransition(
+                animation: _ac,
+                child: FloatingActionButton(
+                  child: const Icon(Icons.check, color: Colors.white),
+                  backgroundColor: Colors.green,
+                  onPressed: () async => await _onAccept(context),
                 ),
               ),
-            ],
-          ),
-          if (_tc.text.trim().isNotEmpty)
-            FadeScaleTransition(
-              animation: _ac,
-              child: FloatingActionButton(
-                child: const Icon(Icons.check, color: Colors.white),
-                backgroundColor: Colors.green,
-                onPressed: () => _onAccept(context),
-              ),
-            ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    }
   }
 
-  void _onAccept(BuildContext context) {
-    final t = _tc.text.trim();
-    if (t.isEmpty) return;
-    Navigator.pop(context, t);
+  Future<void> _onAccept(BuildContext context) async {
+    // Make API call and return hydrated item.
+    final api = Provider.of<ProviderAPI>(context, listen: false);
+    // TODO: Refactor to FirebaseItem
+    final item = FakeItem(text: _tc.text, title: _title.text);
+    final item2 = await api.storeText(item);
+    Navigator.pop(context, item2);
   }
 }

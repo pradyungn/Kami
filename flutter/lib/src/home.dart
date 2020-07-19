@@ -1,7 +1,7 @@
+import 'package:Kami/src/fake_provider.dart';
 import 'package:Kami/src/provider_api.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
@@ -24,6 +24,7 @@ class HomeState extends State<Home> {
     final titleStyle = Theme.of(context).textTheme.headline3.copyWith(
           color: Colors.black, /*fontWeight: FontWeight.bold*/
         );
+    final api = Provider.of<ProviderAPI>(context);
     return Scaffold(
       key: k,
       appBar: AppBar(
@@ -34,10 +35,11 @@ class HomeState extends State<Home> {
           semanticLabel: 'Kami logo',
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () => showSheet(context, BottomSheetType.add),
-          ),
+          if (api.isLoggedIn)
+            IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () => showSheet(context, BottomSheetType.add),
+            ),
           IconButton(
             icon: const Icon(Icons.account_circle),
             onPressed: () async {
@@ -117,15 +119,15 @@ class HomeState extends State<Home> {
               return AddSheet(
                 onPhoto: () async {
                   print('photo');
-                  final result = await Navigator.pushNamed(context, '/photo')
-                      as List<Asset>;
+                  final result =
+                      await Navigator.pushNamed(context, '/photo') as FakeItem;
                   print(result);
                   Navigator.pop(context);
                 },
                 onInput: () async {
                   print('input');
                   final result =
-                      await Navigator.pushNamed(context, '/input') as String;
+                      await Navigator.pushNamed(context, '/input') as FakeItem;
                   print(result);
                   Navigator.pop(context);
                 },

@@ -27,7 +27,20 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Kami',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primaryColor: const Color(0xff3A6EA5),
+          accentColor: const Color(0xff243F5F),
+          backgroundColor: const Color(0xffFFFFF2),
+          textTheme: ThemeData.light().textTheme.apply(
+                bodyColor: const Color(0xff0E0F19),
+                displayColor: const Color(0xff0E0F19),
+              ),
+          buttonTheme: ThemeData.light().buttonTheme.copyWith(
+                buttonColor: const Color(0xff243F5F),
+                colorScheme: ThemeData.light()
+                    .buttonTheme
+                    .colorScheme
+                    .copyWith(brightness: Brightness.dark),
+              ),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: Home(),
