@@ -164,8 +164,7 @@ def ocr():
     decode_string = base64.urlsafe_b64decode(encode_string)
     image = Image.open(io.BytesIO(decode_string))
     text = pytesseract.image_to_string(image)
-    final = parse(text)
-    return final
+    return jsonify({"output": text})
 
 
 if __name__ == '__main__':
