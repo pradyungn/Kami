@@ -19,7 +19,7 @@ export class APIService {
         console.error('Error!');
     };
 
-    xhr.open("POST", "api.kamiapp.ml/nlp", true);
+    xhr.open("POST", "https://api.kamiapp.ml/nlp", true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(`{"input": "${input}"}`);
   }
@@ -36,7 +36,7 @@ export class APIService {
         console.error('Error!');
     };
 
-    xhr.open("POST", "api.kamiapp.ml/ocr", true);
+    xhr.open("POST", "https://api.kamiapp.ml/ocr", true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(`{"input": "${input}"}`);
   }
