@@ -1,9 +1,13 @@
 <div *ngIf="shown" (click)="closeDialog()" class="page-overlay flex-column justify-center align-center">
   <mat-card (click)="stopPropagation($event)">
     <mat-card-title>Image upload</mat-card-title>
-    <form action="">
-      <input matNativeInput type="file" accept="image/*">
-      <button mat-raised-button>Upload</button>
+    <form action="" class="flex-column flex-list">
+      <mat-form-field>
+        <mat-label>Note Name</mat-label>
+        <input matInput id="title" name="title" [(ngModel)]="this.title">
+      </mat-form-field>
+      <input matNativeInput id="file" type="file" accept="image/*" multiple>
+      <button mat-raised-button (click)="submitImage()">Upload</button>
     </form>
   </mat-card>
 </div>

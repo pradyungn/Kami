@@ -6,7 +6,6 @@
   <button mat-icon-button [matMenuTriggerFor]="accountMenu" aria-label="View your profile">
     <mat-icon>account_circle</mat-icon>
   </button>
-  <dialog-createfrom-camera [shown]="showCameraDialog" (closeEvent)="hideDialogs()"></dialog-createfrom-camera>
   <dialog-createfrom-file [shown]="showFileDialog" (closeEvent)="hideDialogs()"></dialog-createfrom-file>
   <dialog-createfrom-text [shown]="showTextDialog" (closeEvent)="hideDialogs()"></dialog-createfrom-text>
   <mat-menu #accountMenu="matMenu">
@@ -20,10 +19,6 @@
     </a>
   </mat-menu>
   <mat-menu #createMenu="matMenu">
-    <button mat-menu-item (click)="showCamera()">
-      <mat-icon>camera_alt</mat-icon>
-      <span>Use your Camera</span>
-    </button>
     <button mat-menu-item (click)="showFile()">
       <mat-icon>image</mat-icon>
       <span>Upload an Image</span>

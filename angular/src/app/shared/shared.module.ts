@@ -5,8 +5,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { 
-  AccountHeaderComponent, 
-  CameraComponent,
+  AccountHeaderComponent,
   FileComponent,
   TextComponent,
   PageNotFoundComponent 
@@ -19,7 +18,6 @@ import { MaterialModule } from './material.module';
 @NgModule({
   declarations: [
     AccountHeaderComponent,
-    CameraComponent,
     FileComponent,
     TextComponent,
     PageNotFoundComponent, 
@@ -38,7 +36,6 @@ import { MaterialModule } from './material.module';
     FormsModule,
     MaterialModule,
     AccountHeaderComponent,
-    CameraComponent,
     FileComponent,
     TextComponent
   ]

@@ -10,17 +10,12 @@ import 'firebase/auth';
   styleUrls: ['./account-header.component.scss']
 })
 export class AccountHeaderComponent implements OnInit {
-  showCameraDialog = false;
   showFileDialog = false;
   showTextDialog = false;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-  }
-
-  showCamera() {
-    this.showCameraDialog = true;
   }
 
   showFile() {
