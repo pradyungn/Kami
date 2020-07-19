@@ -4,8 +4,13 @@
 
 .dashboard-content-container {
   mat-sidenav {
+    min-width: 200px;
     padding: 20px;
     padding-right: 30px;
+
+    button {
+      width: 100%;
+    }
   }
   
   mat-sidenav-content {

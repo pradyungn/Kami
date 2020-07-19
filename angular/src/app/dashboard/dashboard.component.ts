@@ -12,14 +12,15 @@ import { Kami$Note } from '../shared/schemas/note.schema';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  db: firebase.firestore.Firestore;
   notes: Kami$Note[] = [];
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     // Get user collection
-    var db = firebase.firestore();
-    db.collection(firebase.auth().currentUser.uid).get().then(qs => {
+    this.db = firebase.firestore();
+    this.db.collection(firebase.auth().currentUser.uid).get().then(qs => {
       qs.forEach((doc) => {
         let note = <Kami$Note><unknown>doc.data();
         note.id = doc.id;

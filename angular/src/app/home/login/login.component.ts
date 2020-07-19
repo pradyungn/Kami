@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
     let pswd = (<HTMLInputElement>document.getElementById(`${this.prefix}pswd`)).value;
 
     let rpswd = "";
+    
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
     if (this.action === "Register") {
       rpswd = (<HTMLInputElement>document.getElementById(`${this.prefix}rpswd`)).value;

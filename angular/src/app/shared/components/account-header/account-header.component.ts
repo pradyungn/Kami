@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-account-header',
@@ -10,7 +14,7 @@ export class AccountHeaderComponent implements OnInit {
   showFileDialog = false;
   showTextDialog = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -31,5 +35,10 @@ export class AccountHeaderComponent implements OnInit {
     this.showCameraDialog = false;
     this.showFileDialog = false;
     this.showTextDialog = false;
+  }
+
+  logout() {
+    firebase.auth().signOut();
+    this.router.navigateByUrl("/home");
   }
 }
