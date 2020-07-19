@@ -1,5 +1,9 @@
 <div *ngIf="shown" (click)="closeDialog()" class="page-overlay flex-column justify-center align-center">
   <mat-card (click)="stopPropagation($event)">
     <mat-card-title>File upload</mat-card-title>
+    <form action="">
+      <input matNativeInput type="file" accept="image/*">
+      <button mat-raised-button>Upload</button>
+    </form>
   </mat-card>
 </div>

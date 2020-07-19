@@ -38,26 +38,12 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="flex-row flex-wrap flex-list">
-        <mat-card>
-          <mat-icon>insert_drive_file</mat-icon>
-          <mat-card-content>Pog</mat-card-content>
-        </mat-card>
-        <mat-card>
-          <mat-icon>insert_drive_file</mat-icon>
-          <mat-card-content>Pog</mat-card-content>
-        </mat-card>
-        <mat-card>
-          <mat-icon>insert_drive_file</mat-icon>
-          <mat-card-content>Pog</mat-card-content>
-        </mat-card>
-        <mat-card>
-          <mat-icon>insert_drive_file</mat-icon>
-          <mat-card-content>Pog</mat-card-content>
-        </mat-card>
-        <mat-card>
-          <mat-icon>insert_drive_file</mat-icon>
-          <mat-card-content>Pog</mat-card-content>
-        </mat-card>
+        <div *ngFor="let item in notes">
+          <mat-card>
+            <mat-icon>insert_drive_file</mat-icon>
+            <mat-card-content>{{item.name}}</mat-card-content>
+          </mat-card>
+        </div>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

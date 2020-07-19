@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+interface NoteItem {
+  name: string;
+}
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,6 +13,8 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   showCameraDialog = false;
   showFileDialog = false;
+
+  notes: NoteItem[];
 
   constructor(private router: Router) { }
 
