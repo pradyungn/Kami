@@ -8,6 +8,7 @@ import io
 import base64
 import pytesseract
 import cv2 as cv
+import numpy
 app = Flask(__name__)
 
 download('stopwords')
@@ -163,6 +164,7 @@ def ocr():
     encode_string = request.get_json()["input"]
     decode_string = base64.urlsafe_b64decode(encode_string)
     image = Image.open(io.BytesIO(decode_string))
+    image = cv.cvtColor(numpy.array(image), cv.COLOR_RGB2BGR)
     image = cv.resize(image, None, fx=1.2, fy=1.2, interpolation=cv.INTER_CUBIC)
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     image = cv.adaptiveThreshold(image, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 31, 2)
