@@ -17,6 +17,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { HomeModule } from './home/home.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { NoteModule } from './note/note.module';
 
 import { AppComponent } from './app.component';
 
@@ -36,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SharedModule,
     HomeModule,
     DashboardModule,
+    NoteModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {

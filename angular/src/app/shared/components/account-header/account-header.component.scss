@@ -1,0 +1,9 @@
+mat-toolbar {
+  background-color: var(--light-blue);
+  color: var(--white);
+
+  > a {
+    text-decoration: none;
+    color: var(--white);
+  }
+}

@@ -1,0 +1,26 @@
+<div>
+  <app-account-header></app-account-header>
+  <div class="container-wide flex-column">
+    <div class="flex-row align-center">
+      <a mat-icon-button routerLink="/dashboard" aria-label="Go back to all notes">
+        <mat-icon>arrow_back</mat-icon>
+      </a>
+      <h1>{{note?.title}}</h1>
+      <button mat-icon-button (click)="openDeleteDialog()" class="nav-right" aria-label="Delete this note">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div class="flex-smart flex-list">
+      <div class="flex">
+        <h2>Original Text</h2>
+        <hr>
+        <p>{{note?.text}}</p>
+      </div>
+      <div class="flex">
+        <h2>Summarized Text</h2>
+        <hr>
+        <p>{{note?.summary}}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:Kami/src/fake_provider.dart';
+import 'package:Kami/src/firebase_provider.dart';
 import 'package:Kami/src/provider_api.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
@@ -83,7 +83,7 @@ class _PhotoViewState extends State<PhotoView> {
                         } else {
                           return const Center(
                             child: const CircularProgressIndicator(
-                              value: -1,
+                              value: null,
                             ),
                           );
                         }
@@ -106,6 +106,7 @@ class _PhotoViewState extends State<PhotoView> {
                       ),
                     ),
                     onPressed: () async {
+                      FocusScope.of(context).unfocus();
                       final res = await MultiImagePicker.pickImages(
                         maxImages: 50,
                         enableCamera: true,
@@ -144,7 +145,7 @@ class _PhotoViewState extends State<PhotoView> {
                         )),
                       );
                       // TODO: Refactor to FirebaseItem
-                      final item = FakeItem(text: text, title: _title.text);
+                      final item = FirebaseItem(text: text, title: _title.text);
                       final item2 = await api.storeText(item);
                       Navigator.pop(context, item2);
                     },
