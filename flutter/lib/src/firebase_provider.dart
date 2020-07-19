@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
@@ -18,6 +19,7 @@ class FirebaseProvider extends ChangeNotifier
     implements ProviderAPI<FirebaseItem> {
   List<FirebaseItem> _storedTexts = [];
   FirebaseUser _user;
+  StreamSubscription _listener;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final Firestore _store = Firestore.instance;
@@ -26,23 +28,34 @@ class FirebaseProvider extends ChangeNotifier
     _fetchUser();
   }
 
+  void _setupListener() {
+    if (!isLoggedIn) return;
+    _listener = _store.collection(_user.uid).snapshots().listen((event) {
+      _storedTexts = event.documents.map(_documentToItem).toList();
+      notifyListeners();
+    });
+  }
+
   Future<void> _fetchUser() async {
     _user = await _auth.currentUser();
+    if (isLoggedIn) _setupListener();
     notifyListeners();
   }
 
   @override
   Future<void> fetchStoredTexts() async {
     if (!isLoggedIn) return;
-    final texts =
-        (await _store.collection(_user.uid).getDocuments()).documents.map(
-      (e) {
-        var item = FirebaseItem.fromJson(e.data);
-        return item._hydrate(e.documentID, this);
-      },
-    ).toList();
+    final texts = (await _store.collection(_user.uid).getDocuments())
+        .documents
+        .map(_documentToItem)
+        .toList();
     _storedTexts = texts;
     notifyListeners();
+  }
+
+  FirebaseItem _documentToItem(DocumentSnapshot snapshot) {
+    var item = FirebaseItem.fromJson(snapshot.data);
+    return item._hydrate(snapshot.documentID, this);
   }
 
   @override
@@ -57,6 +70,7 @@ class FirebaseProvider extends ChangeNotifier
       ))
           .user;
 
+      _setupListener();
       notifyListeners();
       return true;
     } catch (e) {
@@ -77,6 +91,7 @@ class FirebaseProvider extends ChangeNotifier
 
       _user = (await _auth.signInWithCredential(cred)).user;
 
+      _setupListener();
       notifyListeners();
       return true;
     } catch (e) {
@@ -89,6 +104,7 @@ class FirebaseProvider extends ChangeNotifier
   Future<void> logout() async {
     await _auth.signOut();
     _user = null;
+    await _listener.cancel();
     notifyListeners();
   }
 
@@ -101,6 +117,7 @@ class FirebaseProvider extends ChangeNotifier
           headers: {
             'Origin': 'kamiapp.ml',
             'Accept': 'application/json',
+            'Content-Type': 'application/octet-stream',
           },
           body: image,
         ))
@@ -124,6 +141,7 @@ class FirebaseProvider extends ChangeNotifier
         summary: "This is the text file's summary.",
       ));
 
+      _setupListener();
       notifyListeners();
       return true;
     } catch (e) {
