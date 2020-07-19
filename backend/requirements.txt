@@ -4,4 +4,4 @@ Pillow
 requests
 nltk
 opencv-python
-
+pyspellchecker
