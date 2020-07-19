@@ -3,6 +3,10 @@
 from flask import Flask, request, jsonify
 from nltk import sent_tokenize, download, corpus, PorterStemmer, word_tokenize
 import math
+from PIL import Image
+import io
+import base64
+import pytesseract
 
 app = Flask(__name__)
 
@@ -132,10 +136,13 @@ def _generate_summary(sentences, sentenceValue, threshold):
     return summary
 
 
-@app.route('/', methods=['GET'])
-def parse():
-    content = request.json
-    inp = content['input']
+@app.route('/nlp', methods=['GET'])
+def parse(init=""):
+    if init != "":
+        inp = init
+    else:
+        content = request.get_json()
+        inp = content['input']
     sinp = sent_tokenize(inp)
     slen = len(sinp)
 
@@ -149,6 +156,16 @@ def parse():
     summary = _generate_summary(sinp, ss, th)
 
     return jsonify({"output": summary})
+
+
+@app.route("/ocr", methods=['GET'])
+def ocr():
+    encode_string = request.get_json()["input"]
+    decode_string = base64.urlsafe_b64decode(encode_string)
+    image = Image.open(io.BytesIO(decode_string))
+    text = pytesseract.image_to_string(image)
+    final = parse(text)
+    return final
 
 
 if __name__ == '__main__':
