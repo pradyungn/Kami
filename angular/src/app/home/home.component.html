@@ -2,9 +2,10 @@
   <nav class="flex-smart flex-list align-center">
     <a routerLink="/" class="nav-brand">ｶﾐ Kami</a>
     <button mat-raised-button class="btn-outline nav-right" (click)="toggleLoginPrompt()">Login</button>
-    <button mat-raised-button class="btn" (click)="toggleLoginPrompt()">Register</button>
+    <button mat-raised-button class="btn" (click)="toggleRegisterPrompt()">Register</button>
   </nav>
-  <home-login [hidden]="!this.showLoginPrompt"></home-login>
+  <home-login [hidden]="!this.showLoginPrompt" [action]="'Log In'"></home-login>
+  <home-login [hidden]="!this.showRegisterPrompt" [action]="'Register'"></home-login>
   <header class="header flex-row justify-between align-center">
     <div class="flex-column">
       <h1>ｶﾐ Kami</h1>

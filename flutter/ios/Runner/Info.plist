@@ -45,5 +45,14 @@
 	<string>Scan text using your camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Scan text from photos</string>
+	<key>CFBundleTypeRole</key>
+	<string>Editor</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.googleusercontent.apps.510503315162-i9d0isfd65llu6ll3oin2a9qh9chs2vp</string>
+		</dict>
+	</array>
 </dict>
 </plist>

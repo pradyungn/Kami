@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "510503315162",
+    "firebase_url": "https://kami-1450a.firebaseio.com",
+    "project_id": "kami-1450a",
+    "storage_bucket": "kami-1450a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510503315162:android:0c9348d813fc3e100867e3",
+        "android_client_info": {
+          "package_name": "io.anire.Kami"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510503315162-8pef6dgcon8krul7tf44fn2i5k0gdnjj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.anire.Kami",
+            "certificate_hash": "4aedb24fbce93a5d33f7c7a4fcafb0ac38529fc8"
+          }
+        },
+        {
+          "client_id": "510503315162-gv8m6qilser777fvt4f8hm0cg1moejdn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq5pvurJcKeLtQCCXi-tgiw11Fxx8eOg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510503315162-gv8m6qilser777fvt4f8hm0cg1moejdn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "510503315162-i9d0isfd65llu6ll3oin2a9qh9chs2vp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.anire.Kami"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

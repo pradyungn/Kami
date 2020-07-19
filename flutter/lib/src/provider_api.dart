@@ -6,6 +6,9 @@ abstract class ProviderAPI<Item extends TextItem> extends ChangeNotifier {
   /// Attempt to login with email and password. (API)
   Future<bool> loginWithEmailAndPassword(String email, String password);
 
+  /// Attempt to sign up with email and password. (API)
+  Future<bool> signup(String email, String password);
+
   /// Attempt to login with Google. (API)
   Future<bool> loginWithGoogle();
 

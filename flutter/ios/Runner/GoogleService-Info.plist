@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>510503315162-i9d0isfd65llu6ll3oin2a9qh9chs2vp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.510503315162-i9d0isfd65llu6ll3oin2a9qh9chs2vp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAoKEhLaj9CQxc7C4UmxuM7uS0FKtGQ0Ps</string>
+	<key>GCM_SENDER_ID</key>
+	<string>510503315162</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>io.anire.Kami</string>
+	<key>PROJECT_ID</key>
+	<string>kami-1450a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kami-1450a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:510503315162:ios:65dbaa4cf22b2b0a0867e3</string>
+	<key>DATABASE_URL</key>
+	<string>https://kami-1450a.firebaseio.com</string>
+</dict>
+</plist>

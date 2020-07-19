@@ -2,8 +2,10 @@ import 'package:Kami/src/fake_provider.dart';
 import 'package:Kami/src/home.dart';
 import 'package:Kami/src/input.dart';
 import 'package:Kami/src/item_detail.dart';
+import 'package:Kami/src/login.dart';
 import 'package:Kami/src/photo.dart';
 import 'package:Kami/src/provider_api.dart';
+import 'package:Kami/src/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,7 +27,20 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Kami',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primaryColor: const Color(0xff3A6EA5),
+          accentColor: const Color(0xff243F5F),
+          backgroundColor: const Color(0xffFFFFF2),
+          textTheme: ThemeData.light().textTheme.apply(
+                bodyColor: const Color(0xff0E0F19),
+                displayColor: const Color(0xff0E0F19),
+              ),
+          buttonTheme: ThemeData.light().buttonTheme.copyWith(
+                buttonColor: const Color(0xff243F5F),
+                colorScheme: ThemeData.light()
+                    .buttonTheme
+                    .colorScheme
+                    .copyWith(brightness: Brightness.dark),
+              ),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: Home(),
@@ -33,6 +48,8 @@ class MyApp extends StatelessWidget {
           '/photo': (_) => PhotoView(),
           '/input': (_) => InputView(),
           '/itemDetail': (_) => ItemDetailView(),
+          '/login': (_) => LoginView(),
+          '/signup': (_) => SignupView(),
         },
       ),
     );
