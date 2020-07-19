@@ -14,6 +14,8 @@ app = Flask(__name__)
 download('stopwords')
 download('punkt')
 
+pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+
 
 def _create_frequency_matrix(sentences):
     frequency_matrix = {}
