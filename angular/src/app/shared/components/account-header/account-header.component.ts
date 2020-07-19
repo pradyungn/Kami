@@ -27,7 +27,6 @@ export class AccountHeaderComponent implements OnInit {
   }
 
   hideDialogs() {
-    this.showCameraDialog = false;
     this.showFileDialog = false;
     this.showTextDialog = false;
   }
