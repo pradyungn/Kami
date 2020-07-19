@@ -8,6 +8,7 @@ import {
   AccountHeaderComponent, 
   CameraComponent,
   FileComponent,
+  TextComponent,
   PageNotFoundComponent 
 } from './components/';
 import { WebviewDirective } from './directives/';
@@ -20,6 +21,7 @@ import { MaterialModule } from './material.module';
     AccountHeaderComponent,
     CameraComponent,
     FileComponent,
+    TextComponent,
     PageNotFoundComponent, 
     WebviewDirective
   ],
@@ -37,7 +39,8 @@ import { MaterialModule } from './material.module';
     MaterialModule,
     AccountHeaderComponent,
     CameraComponent,
-    FileComponent
+    FileComponent,
+    TextComponent
   ]
 })
 export class SharedModule {}

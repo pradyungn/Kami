@@ -1,0 +1,14 @@
+<div *ngIf="shown" (click)="closeDialog()" class="page-overlay flex-column justify-center align-center">
+  <mat-card (click)="stopPropagation($event)">
+    <mat-card-title>Paste Text</mat-card-title>
+    <form action="" class="flex-column">
+      <mat-form-field>
+        <mat-label>Paste your Text Here</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <div class="flex-row justify-end">
+        <button mat-raised-button>Submit</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

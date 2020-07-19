@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'dashboard-camera',
+  selector: 'dialog-createfrom-camera',
   templateUrl: './camera.component.html',
   styleUrls: ['./camera.component.scss']
 })

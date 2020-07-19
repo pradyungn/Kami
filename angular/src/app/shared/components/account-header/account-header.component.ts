@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AccountHeaderComponent implements OnInit {
   showCameraDialog = false;
   showFileDialog = false;
+  showTextDialog = false;
 
   constructor() { }
 
@@ -22,8 +23,13 @@ export class AccountHeaderComponent implements OnInit {
     this.showFileDialog = true;
   }
 
+  showText() {
+    this.showTextDialog = true;
+  }
+
   hideDialogs() {
     this.showCameraDialog = false;
     this.showFileDialog = false;
+    this.showTextDialog = false;
   }
 }

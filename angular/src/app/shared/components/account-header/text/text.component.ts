@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'dialog-createfrom-file',
-  templateUrl: './file.component.html',
-  styleUrls: ['./file.component.scss']
+  selector: 'dialog-createfrom-text',
+  templateUrl: './text.component.html',
+  styleUrls: ['./text.component.scss']
 })
-export class FileComponent implements OnInit {
+export class TextComponent implements OnInit {
   @Input() shown: boolean;
   @Output() closeEvent = new EventEmitter();
 
