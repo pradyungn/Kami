@@ -1,7 +1,7 @@
 <div class="login-wrapper">
   <p>{{action}} With:</p>
   <div class="flex-column flex-list">
-    <a mat-stroked-button routerLink="/dashboard" class="provider flex-row align-center justify-center">
+    <a mat-stroked-button (click)="ssoGoogle()" class="provider flex-row align-center justify-center">
       <img src="assets/fontawesome/brands/google.svg" alt="(G)"> Google
     </a>
     <p>or with a Kami account</p>

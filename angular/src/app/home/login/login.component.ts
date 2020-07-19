@@ -23,13 +23,28 @@ export class LoginComponent implements OnInit {
       this.prefix = "l";
   }
 
+  ssoGoogle() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    
+    firebase.auth().signInWithPopup(provider).then((result) => {
+      var credential = result.credential;
+      
+      firebase.auth().signInWithCredential(credential).then(() => {
+        this.router.navigateByUrl("/dashboard");
+      });
+    }).catch(function(error) {
+      console.error(error.code);
+      console.error(error.message);
+    });
+  }
+
   // "Routes" the click action to either register or sign in
   clickRouter() {
     let email = (<HTMLInputElement>document.getElementById(`${this.prefix}email`)).value;
     let pswd = (<HTMLInputElement>document.getElementById(`${this.prefix}pswd`)).value;
 
     let rpswd = "";
-    
+
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
     if (this.action === "Register") {
