@@ -70,4 +70,7 @@ abstract class TextItem {
 
   /// Updates the remote database with the current state of this text. (API)
   Future<void> update();
+
+  /// Deletes this text from the remote database. (API)
+  Future<void> delete();
 }

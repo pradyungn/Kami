@@ -1,5 +1,7 @@
+import 'package:Kami/src/provider_api.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -68,9 +70,16 @@ class _LoginViewState extends State<LoginView> {
                   const SizedBox(height: 50),
                   RaisedButton(
                     child: const Text('Login'),
-                    onPressed: () {
+                    onPressed: () async {
                       _formKey.currentState.validate();
-                      print('login');
+                      final api =
+                          Provider.of<ProviderAPI>(context, listen: false);
+                      final r = await api.loginWithEmailAndPassword(
+                          _email.text, _password.text);
+                      if (!r) {
+                        print('failed to log in');
+                      }
+                      Navigator.pop(context, r);
                     },
                   ),
                 ],

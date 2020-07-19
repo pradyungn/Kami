@@ -22,6 +22,15 @@ class FirebaseProvider extends ChangeNotifier
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final Firestore _store = Firestore.instance;
 
+  FirebaseProvider() {
+    _fetchUser();
+  }
+
+  Future<void> _fetchUser() async {
+    _user = await _auth.currentUser();
+    notifyListeners();
+  }
+
   @override
   Future<void> fetchStoredTexts() async {
     if (!isLoggedIn) return;
@@ -31,7 +40,7 @@ class FirebaseProvider extends ChangeNotifier
         var item = FirebaseItem.fromJson(e.data);
         return item._hydrate(e.documentID, this);
       },
-    );
+    ).toList();
     _storedTexts = texts;
     notifyListeners();
   }
@@ -84,9 +93,21 @@ class FirebaseProvider extends ChangeNotifier
   }
 
   @override
-  Future<String> recognizeText(List<Uint8List> images) {
-    // TODO: implement recognizeText
-    throw UnimplementedError();
+  Future<String> recognizeText(List<Uint8List> images) async {
+    return (await Future.wait(
+      images.map(
+        (image) async => jsonDecode((await http.post(
+          OCR_ENDPOINT,
+          headers: {
+            'Origin': 'kamiapp.ml',
+            'Accept': 'application/json',
+          },
+          body: image,
+        ))
+            .body)['output'] as String,
+      ),
+    ))
+        .join('\n');
   }
 
   @override
@@ -95,6 +116,13 @@ class FirebaseProvider extends ChangeNotifier
       _user = (await _auth.createUserWithEmailAndPassword(
               email: email, password: password))
           .user;
+
+      // Add a "get started" item
+      await storeText(FirebaseItem(
+        text: 'This is your first text file!',
+        title: 'Your First Text',
+        summary: "This is the text file's summary.",
+      ));
 
       notifyListeners();
       return true;
@@ -119,7 +147,16 @@ class FirebaseProvider extends ChangeNotifier
     }
     _storedTexts = _storedTexts.where((x) => x.id != text2.id).toList()
       ..add(text2);
+    notifyListeners();
     return text2;
+  }
+
+  Future<void> _deleteText(FirebaseItem text) async {
+    if (!isLoggedIn) return;
+    _storedTexts.removeWhere((element) => element == text);
+    final c = _store.collection(_user.uid);
+    await c.document(text.id).delete();
+    notifyListeners();
   }
 
   @override
@@ -129,11 +166,16 @@ class FirebaseProvider extends ChangeNotifier
   Future<String> summarize(String text) async {
     final resp = await http.post(
       NLP_ENDPOINT,
+      headers: {
+        'Origin': 'kamiapp.ml',
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
       body: jsonEncode({
-        'text': text,
+        'input': text,
       }),
     );
-    final dec = jsonDecode(resp.body) as Map<String, String>;
+    final dec = jsonDecode(resp.body);
     return dec['output'];
   }
 }
@@ -171,6 +213,11 @@ class FirebaseItem extends TextItem {
   @override
   Future<void> update() async {
     await _provider.storeText(this);
+  }
+
+  @override
+  Future<void> delete() async {
+    await _provider._deleteText(this);
   }
 
   FirebaseItem _hydrate(String id, FirebaseProvider provider) {

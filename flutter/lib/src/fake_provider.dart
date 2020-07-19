@@ -101,6 +101,13 @@ Have you experienced this before? To be honest, I don’t have the answers. Same
     print('Fetched stored texts');
   }
 
+  Future<void> _deleteText(FakeItem text) async {
+    if (!_isLoggedIn) return;
+    _storedTexts.removeWhere((x) => x == text);
+    _storedTextsRemote.removeWhere((x) => x == text);
+    notifyListeners();
+  }
+
   void _updateItem(FakeItem item) {
     if (!_isLoggedIn) return;
     _storedTextsRemote = _storedTextsRemote
@@ -146,6 +153,11 @@ class FakeItem extends TextItem {
   @override
   Future<void> update() async {
     _provider._updateItem(this);
+  }
+
+  @override
+  Future<void> delete() async {
+    _provider._deleteText(this);
   }
 
   FakeItem _hydrate(String id, FakeProvider provider) {

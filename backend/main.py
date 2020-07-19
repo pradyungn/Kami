@@ -163,9 +163,7 @@ def parse(init=""):
 
 @app.route("/ocr", methods=['POST'])
 def ocr():
-    encode_string = request.get_json()["input"]
-    decode_string = base64.urlsafe_b64decode(encode_string)
-    image = Image.open(io.BytesIO(decode_string))
+    image = Image.open(request.stream)
     image = cv.cvtColor(numpy.array(image), cv.COLOR_RGB2BGR)
     image = cv.resize(image, None, fx=1.2, fy=1.2, interpolation=cv.INTER_CUBIC)
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
@@ -176,4 +174,4 @@ def ocr():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+   app.run(host='0.0.0.0', debug=True)
