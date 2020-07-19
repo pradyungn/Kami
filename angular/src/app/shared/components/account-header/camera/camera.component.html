@@ -1,5 +1,7 @@
 <div *ngIf="shown" (click)="closeDialog()" class="page-overlay flex-column justify-center align-center">
-  <mat-card (click)="stopPropagation($event)">
+  <mat-card (click)="stopPropagation($event)" class="flex-column">
     <mat-card-title>Camera upload</mat-card-title>
+    <video id="video"></video>
+    <button mat-raised-button (click)="initVideo()">Start</button>
   </mat-card>
 </div>

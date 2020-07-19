@@ -3,14 +3,25 @@ import { CommonModule } from '@angular/common';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { PageNotFoundComponent } from './components/';
+import { 
+  AccountHeaderComponent, 
+  CameraComponent,
+  FileComponent,
+  PageNotFoundComponent 
+} from './components/';
 import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material.module';
 
 @NgModule({
-  declarations: [PageNotFoundComponent, WebviewDirective],
+  declarations: [
+    AccountHeaderComponent,
+    CameraComponent,
+    FileComponent,
+    PageNotFoundComponent, 
+    WebviewDirective
+  ],
   imports: [
     CommonModule, 
     TranslateModule, 
@@ -21,7 +32,10 @@ import { MaterialModule } from './material.module';
     TranslateModule, 
     WebviewDirective, 
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    AccountHeaderComponent,
+    CameraComponent,
+    FileComponent
   ]
 })
 export class SharedModule {}

@@ -4,6 +4,7 @@ import { PageNotFoundComponent } from './shared/components';
 
 import { HomeRoutingModule } from './home/home-routing.module';
 import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
+import { NoteRoutingModule } from './note/note-routing.module';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     HomeRoutingModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    NoteRoutingModule
   ],
   exports: [RouterModule]
 })
