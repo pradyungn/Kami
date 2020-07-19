@@ -1,4 +1,4 @@
-import 'package:Kami/src/fake_provider.dart';
+import 'package:Kami/src/firebase_provider.dart';
 import 'package:Kami/src/home.dart';
 import 'package:Kami/src/input.dart';
 import 'package:Kami/src/item_detail.dart';
@@ -10,7 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  FakeProvider provider = FakeProvider();
+  WidgetsFlutterBinding.ensureInitialized();
+  final provider = FirebaseProvider();
   runApp(MyApp(provider: provider));
 }
 

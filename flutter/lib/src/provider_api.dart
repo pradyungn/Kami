@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 abstract class ProviderAPI<Item extends TextItem> extends ChangeNotifier {
   /// Attempt to login with email and password. (API)
@@ -37,15 +38,19 @@ abstract class ProviderAPI<Item extends TextItem> extends ChangeNotifier {
 
 abstract class TextItem {
   /// Remote ID of this text.
+  @JsonKey(ignore: true)
   final String /*!*/ id;
 
   /// Contents of this text.
+  @JsonKey(nullable: false)
   String /*!*/ text;
 
   /// Title of this text.
+  @JsonKey(nullable: false)
   String /*!*/ title;
 
   /// Summary of this text, if available.
+  @JsonKey(nullable: true)
   String /*?*/ summary;
 
   TextItem.internal({
