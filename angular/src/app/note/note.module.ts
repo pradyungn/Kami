@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 import { NoteComponent } from './note.component';
+import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
-  declarations: [NoteComponent],
+  declarations: [NoteComponent, DeleteComponent],
   imports: [
     CommonModule,
     SharedModule,
