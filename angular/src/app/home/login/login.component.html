@@ -1,5 +1,5 @@
 <div class="login-wrapper">
-  <p>Log In or Register With:</p>
+  <p>{{action}} With:</p>
   <div class="flex-column flex-list">
     <a mat-stroked-button routerLink="/dashboard" class="provider flex-row align-center justify-center">
       <img src="assets/fontawesome/brands/google.svg" alt="(G)"> Google
@@ -12,9 +12,13 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Your Password</mat-label>
-        <input matInput type="password" placeholder="Password">
+        <input matInput type="password">
       </mat-form-field>
-      <button mat-stroked-button class="provider" type="submit">Log In</button>
+      <mat-form-field *ngIf="action === 'Register'" appearance="outline">
+        <mat-label>Retype Your Password</mat-label>
+        <input matInput type="password">
+      </mat-form-field>
+      <button mat-stroked-button class="provider" type="submit">{{action}}</button>
     </form>
   </div>
   <br>

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   showLoginPrompt = false;
+  showRegisterPrompt = false;
 
   constructor(private router: Router) { }
 
@@ -15,5 +16,11 @@ export class HomeComponent implements OnInit {
 
   toggleLoginPrompt() {
     this.showLoginPrompt = !this.showLoginPrompt;
+    this.showRegisterPrompt = false;
+  }
+
+  toggleRegisterPrompt() {
+    this.showRegisterPrompt = !this.showRegisterPrompt;
+    this.showLoginPrompt = false;
   }
 }
