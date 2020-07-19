@@ -1,5 +1,6 @@
 import 'package:Kami/src/firebase_provider.dart';
 import 'package:Kami/src/provider_api.dart';
+import 'package:Kami/src/theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,8 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
+  final GlobalKey<ScaffoldState> k = GlobalKey(debugLabel: 'scaffold');
+
   @override
   void initState() {
     super.initState();
@@ -17,7 +20,6 @@ class HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<ScaffoldState> k = GlobalKey(debugLabel: 'scaffold');
     final iconColor =
         Theme.of(context).brightness == Brightness.light ? 'dark' : 'light';
     final iconAsset = 'assets/kami_$iconColor.png';
@@ -35,6 +37,23 @@ class HomeState extends State<Home> {
           semanticLabel: 'Kami logo',
         ),
         actions: [
+          GestureDetector(
+            child: IconButton(
+              icon: const Icon(Icons.brightness_medium),
+              onPressed: () {
+                final api = Provider.of<ThemeSwitcher>(context, listen: false);
+                api.switchTheme();
+              },
+            ),
+            onLongPress: () {
+              final api = Provider.of<ThemeSwitcher>(context, listen: false);
+              api.resetTheme();
+              k.currentState.showSnackBar(SnackBar(
+                content: const Text('Reset theme to system default'),
+                duration: const Duration(seconds: 2),
+              ));
+            },
+          ),
           if (api.isLoggedIn)
             IconButton(
               icon: const Icon(Icons.add),
