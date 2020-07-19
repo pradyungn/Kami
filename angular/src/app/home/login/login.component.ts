@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 @Component({
   selector: 'home-login',
@@ -45,6 +46,15 @@ export class LoginComponent implements OnInit {
 
     firebase.auth().createUserWithEmailAndPassword(email, pswd).then(data => {
       console.log("Success: Create user");
+
+      // Init user collection
+      var db = firebase.firestore();
+      db.collection(firebase.auth().currentUser.uid).add({
+        "text": "This is your first text file!",
+        "title": "Your First Text",
+        "summary": "This is the text file's summary."
+      });
+
       this.router.navigateByUrl("/dashboard");
     });
   }

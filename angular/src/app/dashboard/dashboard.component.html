@@ -28,7 +28,11 @@
     </button>
     <button mat-menu-item (click)="showFile()">
       <mat-icon>image</mat-icon>
-      <span>Upload a File</span>
+      <span>Upload an Image</span>
+    </button>
+    <button mat-menu-item (click)="showPaste()">
+      <mat-icon>content_paste</mat-icon>
+      <span>Paste Text</span>
     </button>
   </mat-menu>
   <mat-sidenav-container class="dashboard-content-container flex">
@@ -38,9 +42,9 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="flex-row flex-wrap flex-list">
-        <mat-card>
+        <mat-card *ngFor="let file of this.notes">
           <mat-icon>insert_drive_file</mat-icon>
-          <mat-card-content></mat-card-content>
+          <mat-card-content>{{file.title}}</mat-card-content>
         </mat-card>
       </div>
     </mat-sidenav-content>
