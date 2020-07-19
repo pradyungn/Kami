@@ -6,7 +6,10 @@
         <mat-label>Note Name</mat-label>
         <input matInput id="title" name="title" [(ngModel)]="this.title">
       </mat-form-field>
-      <input matNativeInput id="file" type="file" accept="image/*" multiple>
+      <label class="file">
+        <input type="file" id="file" aria-label="Image upload" accept="image/*" multiple>
+        <span class="file-custom"></span>
+      </label>
       <button mat-raised-button (click)="submitImage()">Upload</button>
     </form>
   </mat-card>

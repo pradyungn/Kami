@@ -26,6 +26,9 @@
     transition-duration: 0.5s;
 
     div {
+      background-image: url("assets/img/fileicon.png");
+      background-size: contain;
+      background-repeat: no-repeat;
       position: absolute;
       top: 0;
       bottom: 0;
@@ -35,8 +38,6 @@
       margin: auto;
 
       animation: fade-in 1s ease forwards;
-      background-color: var(--white);
-      box-shadow: var(--box-shadow) 0 2px 8px;
       width: 220px;
       height: 250px;
 
