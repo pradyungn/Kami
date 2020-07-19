@@ -1,3 +1,21 @@
-<div class="flex-column">
+<div>
   <app-account-header></app-account-header>
+  <div class="container-wide flex-column">
+    <div class="flex-row align-center">
+      <a mat-icon-button routerLink="/dashboard">
+        <mat-icon>arrow_back</mat-icon>
+      </a>
+      <h1>{{note?.title}}</h1>
+    </div>
+    <div class="flex-smart flex-list">
+      <div class="flex">
+        <h2>Original Text</h2>
+        <p>{{note?.text}}</p>
+      </div>
+      <div class="flex">
+        <h2>Summarized Text</h2>
+        <p>{{note?.summary}}</p>
+      </div>
+    </div>
+  </div>
 </div>

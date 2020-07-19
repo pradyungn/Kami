@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -9,7 +10,8 @@ import { NoteComponent } from './note.component';
   declarations: [NoteComponent],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ]
 })
 export class NoteModule { }

@@ -7,7 +7,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="flex-row flex-wrap flex-list">
-        <a [routerLink]="['/notes', file.id]" *ngFor="let file of this.notes">
+        <a [routerLink]="['/note', file.id]" *ngFor="let file of this.notes">
           <mat-card>
             <mat-icon>insert_drive_file</mat-icon>
             <mat-card-content>{{file.title}}</mat-card-content>
