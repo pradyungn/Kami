@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit {
     }).catch(function(error) {
       console.error(error.code);
       console.error(error.message);
+      // Validation
+      document.getElementById(`${this.prefix}validation`).innerText = `${error.code} - ${error.message}`;
     });
   }
 
@@ -73,6 +75,9 @@ export class LoginComponent implements OnInit {
       });
 
       this.router.navigateByUrl("/dashboard");
+    }).catch(err => {
+      // Validation
+      document.getElementById(`${this.prefix}validation`).innerText = `${err}`;
     });
   }
 
@@ -80,6 +85,9 @@ export class LoginComponent implements OnInit {
     firebase.auth().signInWithEmailAndPassword(email, pswd).then(data => {
       console.log("Success: Sign In");
       this.router.navigateByUrl("/dashboard");
+    }).catch(err => {
+      // Validation
+      document.getElementById(`${this.prefix}validation`).innerText = `${err}`;
     });
   }
 }

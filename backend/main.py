@@ -14,7 +14,7 @@ app = Flask(__name__)
 download('stopwords')
 download('punkt')
 
-pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+pytesseract.pytesseract.tesseract_cmd = "/usr/local/bin/tesseract"
 
 
 def _create_frequency_matrix(sentences):
@@ -163,7 +163,11 @@ def parse(init=""):
 
 @app.route("/ocr", methods=['POST'])
 def ocr():
-    image = Image.open(request.stream)
+    try:
+        image = Image.open(request.stream)
+    except:
+        heif_file = pyheif.read_heif(request.stream)
+        image = Image.frombytes(mode=heif_file.mode, size=heif_file.size, data=heif_file.data)
     image = cv.cvtColor(numpy.array(image), cv.COLOR_RGB2BGR)
     image = cv.resize(image, None, fx=1.2, fy=1.2, interpolation=cv.INTER_CUBIC)
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)

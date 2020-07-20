@@ -93,7 +93,6 @@ class _ItemDetailViewState extends State<ItemDetailView> {
                               final api = Provider.of<ProviderAPI>(context,
                                   listen: false);
                               setState(() => _loadingSummary = true);
-                              await Future.delayed(Duration(seconds: 3));
                               final summary = await api.summarize(item.text);
                               setState(() => item.summary = summary);
                               await item.update();
