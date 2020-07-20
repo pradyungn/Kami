@@ -1,4 +1,4 @@
-# Kam
+# Kami
 
 Changing the way we read.
 
