@@ -30,22 +30,22 @@ dependencies:
   uuid: ^2.2.0
   email_validator: ^1.0.0
   material_design_icons_flutter: 4.0.5345
-  http: ^0.12.2
+  http: ^0.13.5
   shared_preferences: ^0.5.8
 
-  firebase_core: ^0.4.5
+  firebase_core: ^0.8.0-1.0.nullsafety.2
   google_sign_in: ^4.5.1
-  firebase_analytics: ^5.0.2
+  firebase_analytics: ^5.0.15
 
-  firebase_auth: ^0.16.1
-  cloud_firestore: ^0.13.7
-  json_annotation: ^3.0.1
+  firebase_auth: ^0.21.0-1.1.nullsafety.3
+  cloud_firestore: ^0.17.0-1.0.nullsafety.2
+  json_annotation: ^3.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  json_serializable: ^3.3.0
-  build_runner: ^1.10.0
+  json_serializable: ^3.5.2
+  build_runner: ^1.11.1+1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
